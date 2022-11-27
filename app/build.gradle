@@ -38,6 +38,7 @@ android {
 dependencies {
 
     implementation(project(":core:designsystem"))
+    implementation(project(":feature:standing"))
 
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.activity.compose)
