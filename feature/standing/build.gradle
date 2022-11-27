@@ -1,0 +1,9 @@
+plugins {
+    id("fiki.android.feature")
+    id("fiki.android.library.compose")
+    id("fiki.android.library.jacoco")
+}
+
+android {
+    namespace = "com.saeed.fiki.feature.standing"
+}

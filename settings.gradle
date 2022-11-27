@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Fiki"
 include (":app")
+include (":feature:standing")
 include (":core:designsystem")
