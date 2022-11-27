@@ -17,3 +17,4 @@ rootProject.name = "Fiki"
 include (":app")
 include (":feature:standing")
 include (":core:designsystem")
+include (":core:ui")
