@@ -155,11 +155,9 @@ val DarkAndroidBackgroundTheme = BackgroundTheme(color = Color.Black)
 @Composable
 fun FikiTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    androidTheme: Boolean = false,
     content: @Composable () -> Unit
 ) = FikiTheme(
     darkTheme = darkTheme,
-    androidTheme = androidTheme,
     disableDynamicTheming = false,
     content = content
 )
@@ -177,13 +175,10 @@ fun FikiTheme(
 @Composable
 internal fun FikiTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    androidTheme: Boolean = false,
     disableDynamicTheming: Boolean,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = if (androidTheme) {
-        if (darkTheme) DarkAndroidColorScheme else LightAndroidColorScheme
-    } else if (!disableDynamicTheming && supportsDynamicTheming()) {
+    val colorScheme = if (!disableDynamicTheming && supportsDynamicTheming()) {
         val context = LocalContext.current
         if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
     } else {
@@ -194,14 +189,9 @@ internal fun FikiTheme(
         color = colorScheme.surface,
         tonalElevation = 2.dp
     )
-    val backgroundTheme = if (androidTheme) {
-        if (darkTheme) DarkAndroidBackgroundTheme else LightAndroidBackgroundTheme
-    } else {
-        defaultBackgroundTheme
-    }
 
     CompositionLocalProvider(
-        LocalBackgroundTheme provides backgroundTheme
+        LocalBackgroundTheme provides defaultBackgroundTheme
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
